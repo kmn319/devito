@@ -650,6 +650,9 @@ class CGen(Visitor):
         return c.Module(headers + includes + typedecls + globs +
                         esigns + [blankline, kernel] + efuncs)
 
+    def visit_Break(self, o):
+        return c.Statement("break")
+        
 
 class CInterface(CGen):
 
