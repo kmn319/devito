@@ -787,7 +787,7 @@ class ConditionalDimension(DerivedDimension):
     __rkwargs__ = DerivedDimension.__rkwargs__ + ('factor', 'condition', 'indirect')
 
     def __init_finalize__(self, name, parent=None, factor=None, condition=None,
-                          indirect=False, **kwargs):
+                          indirect=False, breakc=False, **kwargs):
         # `parent=None` degenerates to a ConditionalDimension outside of
         # any iteration space
         if parent is None:
@@ -798,6 +798,7 @@ class ConditionalDimension(DerivedDimension):
         self._factor = factor
         self._condition = condition
         self._indirect = indirect
+        self._break = breakc
 
     @property
     def spacing(self):
@@ -810,6 +811,10 @@ class ConditionalDimension(DerivedDimension):
     @property
     def condition(self):
         return self._condition
+
+    @property
+    def breakc(self):
+        return self._break
 
     @property
     def indirect(self):

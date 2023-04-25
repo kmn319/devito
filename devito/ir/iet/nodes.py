@@ -27,7 +27,7 @@ __all__ = ['Node', 'Block', 'Expression', 'Callable', 'Call',
            'AugmentedExpression', 'Increment', 'Return', 'While',
            'ParallelIteration', 'ParallelBlock', 'Dereference', 'Lambda',
            'SyncSpot', 'Pragma', 'DummyExpr', 'BlankLine', 'ParallelTree',
-           'BusyWait', 'CallableBody', 'Transfer']
+           'BusyWait', 'CallableBody', 'Transfer', 'Break']
 
 # First-class IET nodes
 
@@ -822,6 +822,13 @@ class Conditional(DoIf):
         else:
             return "<[%s] ? [%s]" % (ccode(self.condition), repr(self.then_body))
 
+
+class Break(Node):
+
+    """A node representing a break statement"""
+
+    is_Break = True
+    
 
 # Second level IET nodes
 
